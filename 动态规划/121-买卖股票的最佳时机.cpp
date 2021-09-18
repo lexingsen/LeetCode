@@ -2,6 +2,10 @@
 #include <climits>
 using namespace std;
 
+/*
+一次买卖
+*/
+
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
