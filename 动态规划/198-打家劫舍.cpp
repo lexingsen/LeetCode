@@ -11,7 +11,7 @@ public:
             if (i >= 2) {
                 f[i] += f[i - 2];
             }
-            // 第i家不投 f[i] = f[i - 1]
+            // 第i家不偷 f[i] = f[i - 1]
             f[i] = max(f[i], f[i - 1]);
         }
         return f[n];
