@@ -14,7 +14,7 @@ f[i][j]: 表示s[i...j]会问子序列长度的最大值
     (2) s[i]!=s[j]   f[i][j] = max(f[i+1][j], f[i][j-1]) 即包含s[i]或s[j]其中一个字符的回文子序列的最大长度
 */
 
-class Solution {
+class Solution {    
 public:
     int longestPalindromeSubseq(string s) {
         int n = s.size();
