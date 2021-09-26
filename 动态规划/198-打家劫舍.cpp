@@ -3,7 +3,33 @@
 #include <algorithm>
 using namespace std;
 
+/*
+状态表示
+f[i] 第i必选
+g[i] 第i必不选
 
+状态计算
+f[i] = g[i - 1] + w[i];
+g[i] = max(f[i - 1], g[i - 1]);
+*/
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> f(n + 1);
+        vector<int> g(n + 1);
+        int res = 0;
+        for (int i = 1; i <= n; i++) {
+            f[i] = g[i - 1] + nums[i - 1];
+            g[i] = max(g[i - 1], f[i - 1]);
+            res = max(res, max(g[i], f[i]));
+        }
+        return res;
+    }
+};
+
+#if 0
+// 方法一
 /*
 状态表示 (集合，属性)
 f[i][1] 表示第i家偷，从1~i能偷到的最大价值
@@ -38,11 +64,11 @@ public:
         return res;
     }
 };
-
-
+#endif
 
 
 #if 0
+// 方法一
 /*
 状态表示
 f[i]表示偷[1~n]家的最大值
