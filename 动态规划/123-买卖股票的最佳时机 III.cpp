@@ -34,3 +34,25 @@ public:
         return res;
     }
 };
+
+// 方法二
+const int N = 1e5 + 10;
+int f[N][3][2];
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        for (int i = 0; i <= 2; i++) {
+            f[0][i][1] = -prices[0];
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= 2; j++) {
+                f[i][j][0] = max(f[i - 1][j][0], f[i - 1][j][1] + prices[i - 1]);
+                f[i][j][1] = max(f[i - 1][j][1], f[i - 1][j - 1][0] - prices[i - 1]);;
+            }
+        }
+        return f[n][2][0];
+    }   
+};
