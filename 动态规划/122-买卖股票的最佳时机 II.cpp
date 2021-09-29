@@ -4,6 +4,9 @@ using namespace std;
 /*
 多次买卖
 不能交叉
+
+脑筋急转弯
+核心思想：只要第二天比一天贵 就第一天买入第二天卖出去
 */
 
 class Solution {
