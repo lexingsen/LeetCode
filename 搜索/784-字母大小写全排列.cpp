@@ -5,40 +5,30 @@
 using namespace std;
 
 
-vector<string> res;
-  
+vector<string> ans;
 
-void dfs(string& str, int index) {
-  if (index == str.size()) {
-    res.push_back(str);
-    return ;
-  }
+class Solution {
+public:
+    vector<string> ans;
+    void dfs(string& s, int u) {
+        if (u == s.size()) {
+            ans.emplace_back(s);
+            return;
+        } else {
+            dfs(s, u + 1); // 不变换当前字母
+            if (!isdigit(s[u])) {
+                s[u] ^= 32;
+                dfs(s, u + 1);
+                s[u] ^= 32;
+            }
+        }
+    }
 
-  dfs(str, index+1);
-  if (str[index] >= 'A') {
-    str[index] ^= 32;
-    dfs(str, index+1);
-    str[index] ^= 32;
-  }
-  // if (islower(str[index])) {
-  //   str[index] = toupper(str[index]);
-  //   dfs(str, index+1);
-  //   str[index] = tolower(str[index]);
-  // }
-  // else if (isupper(str[index])) {
-  //   str[index] = tolower(str[index]);
-  //   dfs(str, index+1);
-  //   str[index] = toupper(str[index]);
-  // }
-}
-
-vector<string> letterCasePermutation(string str) {
-  if (!str.size()) {
-    return res;
-  }
-  dfs(str, 0);
-  return res;
-}
+    vector<string> letterCasePermutation(string s) {
+        dfs(s, 0);
+        return ans;
+    }
+};
 
 int main() {
   string a = "a1b2";
