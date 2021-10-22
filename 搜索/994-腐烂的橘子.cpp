@@ -38,6 +38,9 @@ public:
             for (int i = 0; i < 4; i++) {
                 int x = t.x + dx[i];
                 int y = t.y + dy[i];
+                // 1.下标不在范围内
+                // 2.grid[x][y] == 0 当前位置没有橘子
+                // 3.dist[x][y] == -1 
                 if (x < 0 || x >= n || y < 0 || y >= m || ~dist[x][y] || !grid[x][y]) {
                     continue;
                 }
