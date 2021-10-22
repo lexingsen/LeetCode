@@ -12,7 +12,7 @@ public:
         if (!head || !head->next) {
             return head;
         }
-        ListNode* dummy = new ListNode(-1, head);
+        ListNode* dummy = new ListNode(-1);
         for (auto p = head; p;) {
             auto cur = dummy;
             auto next = p->next;
