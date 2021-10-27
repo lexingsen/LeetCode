@@ -6,7 +6,6 @@ using namespace std;
 
 
 vector<vector<int>> res;
-
 /*
 para
 path:记录组合的子集
